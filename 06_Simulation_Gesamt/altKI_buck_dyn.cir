@@ -1,0 +1,34 @@
+* altKI – Entwurf einer früheren KI-Sitzung, ungeprüft. Nur zur Gegenprobe, nicht als Vorgabe übernehmen.
+* Buck Dynamik: Laststufe 1,0 -> 2,8 A (BSZ097)
+.lib LTC7800.sub
+.include standard.mos
+.include "..\02_Modelle\LTspice\WE-XHMI\WE-XHMI.lib"
+.model DSCH D(Is=1e-7 N=1.05 Rs=0.02)
+V1 IN 0 24
+Cin IN 0 16.5u Rser=5m
+M1 IN TG SW SW BSZ097N04LS
+M2 SW BG 0 0 BSZ097N04LS
+D1 INTVCC BOOT DSCH
+Cb BOOT SW 0.22u
+X1 SW SENSP 1510_74439370100_10u
+Rsen SENSP SENSN 5m
+Cout SENSN 0 33u Rser=2m
+Bload SENSN 0 I = 1.0 + 1.8*(time>1.6m) - 1.8*(time>2.2m)
+R1 SENSN FB 168k
+R2 FB 0 12k
+Rfreq FREQ 0 33k
+Rrun1 IN RUN 330k
+Rrun2 RUN 0 22k
+Css SS 0 10n
+Rith ITH ITHM 2.2k
+Cith ITHM 0 10n
+Cith2 ITH 0 100p
+Cint1 INTVCC 0 10u
+Cint2 INTVCC 0 1u
+XU1 SENSN FREQ 0 0 0 0 RUN 0 0 0 0 0 0 0 0 0 0 0 INTVCC SENSN 0 IN BG BOOT SW TG NC27 0 SS ITH FB SENSP LTC7800
+.tran 0 2.6m 0 50n startup
+.meas tran Vout_pre AVG V(SENSN) FROM 1.4m TO 1.6m
+.meas tran Vdrop MIN V(SENSN) FROM 1.6m TO 1.9m
+.meas tran Vover MAX V(SENSN) FROM 2.2m TO 2.5m
+.meas tran Vout_post AVG V(SENSN) FROM 2.5m TO 2.6m
+.end

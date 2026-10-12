@@ -1,0 +1,51 @@
+* altKI – Entwurf einer früheren KI-Sitzung, ungeprüft. Nur zur Gegenprobe, nicht als Vorgabe übernehmen.
+**************************************************
+* Projekt-Modelle (datenblattbasiert) - LTC7800-Buck
+* Ort: files\projekt\models\project_models.lib
+* Verwendung: .include "02_Modelle\LTspice\altKI_project_models.lib"
+* Quelle je Block angegeben. Werte = Datenblatt (sofern nicht anders vermerkt).
+**************************************************
+
+*---- WE-VD Varistor 820542501 (39 V MOV) ---------------------------
+* Datenblatt Wuerth: Vnenn 39V, Vc=77V@10A, alpha~13.5, Imax 1kA (8/20us),
+* E 9.4J, C=7.62nF.  Verhaltensmodell: i=1mA*sign(v)*(|v|/39)^13.5
+.subckt MOV_820542501 p n
+Cm p n 7.62n
+B1 p n I = 1m*(pwr(max(V(p,n),1e-6)/39,13.5) - pwr(max(-V(p,n),1e-6)/39,13.5))
+.ends MOV_820542501
+
+*---- WE-CMB 744841414 (Gleichtaktdrossel, 4 Pins) -------------------
+* Datenblatt: 2 Wicklungen, L=14uH (+/-30%), DCR je 15mOhm, k~0.99
+* Pins: (p1,n1)=Wicklung A, (p2,n2)=Wicklung B
+.subckt CMC_744841414 p1 n1 p2 n2
+La p1 a 14u
+Ra a n1 15m
+Lb p2 b 14u
+Rb b n2 15m
+K1 La Lb 0.99
+.ends CMC_744841414
+
+*---- Murata GRM32ER72A475KE14L (4.7uF/100V X7R) DC-Bias-Modell ------
+* Annahme: C_eff(24V) ~ 75% von C0 (mit SimSurfing zu bestaetigen).
+* C(V)=C0*(1-0.010417*V)  ->  Q=C0*(V-0.005208*V^2)
+.subckt MLCC_4u7_100V p n
+Bq p n I = ddt(4.7u*(V(p,n) - 0.005208*V(p,n)*V(p,n)))
+.ends MLCC_4u7_100V
+
+*---- Wuerth 865080543009 (WCAP-ASLI 47uF/35V, gepolt) ---------------
+* Datenblatt: 47uF +/-20%, 35V, Impedanz Z=530mOhm @100kHz/20C (=ESR), ESR/ESL-Schaetzung
+.subckt ELKO_47u_35V p n
+C1 p n1 47u
+R1 n1 n2 0.53
+L1 n2 n 5n
+.ends ELKO_47u_35V
+
+*---- Littelfuse 0452005.MRL (5A traege, R~14mOhm) -------------------
+* Fuer DC/Lastsimulation genuegt der Serienwiderstand.
+.subckt FUSE_5A p n
+R1 p n 14m
+.ends FUSE_5A
+
+*---- Zener-Ersatz (falls standard.dio keinen passenden Wert hat) -----
+.model DZ_15V0 D(Is=1e-9 Rs=0.6 Cjo=100p nbv=6 bv=15 Ibv=1m mfg=manual type=Zener)
+.model DZ_4V7  D(Is=1e-9 Rs=2   Cjo=200p nbv=4 bv=4.7 Ibv=5m mfg=manual type=Zener)

@@ -1,0 +1,62 @@
+*
+*******************************************
+*
+*PMEG4030ER
+*
+*NXP Semiconductors
+*
+*MEGA Schottky barrier rectifiers
+*
+*
+*
+*
+*IFSM = 50A   @ tp = 8ms
+*VF   = 540mV @ IF = 3A
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*Package pinning does not match Spice model pinning.
+*Package: SOD123W
+*
+*Package Pin 1: Cathode
+*Package Pin 2: Anode            
+*
+*
+*
+*
+*Simulator: SPICE2
+*
+*******************************************
+*#
+.SUBCKT PMEG4030ER 1 2
+*
+* The resistor R1 does not reflect 
+* a physical device.  Instead it
+* improves modeling in the reverse 
+* mode of operation.
+*
+R1 1 2 4.936E+7
+D1 1 2 PMEG4030ER
+*
+.MODEL PMEG4030ER D
++ IS = 1.656E-6
++ N = 1
++ BV = 44
++ IBV = 0.001
++ RS = 0.03034
++ CJO = 5E-10
++ VJ = 0.3122
++ M = 0.4761
++ FC = 0.5
++ EG = 0.69
++ XTI = 2
+.ENDS
+*
+

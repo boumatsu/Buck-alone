@@ -1,0 +1,526 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Root>
+  <ConverterSpecs>
+    <ConverterSpec>
+      <LastSavedFilesCultureInfo>en-US</LastSavedFilesCultureInfo>
+      <PartName>LTC7800</PartName>
+      <Topology>Buck</Topology>
+      <Type>Controller</Type>
+      <OutputNum>One</OutputNum>
+      <IcThetaJA>0</IcThetaJA>
+      <IcTa>25</IcTa>
+      <SolutionAreamm2>1064.9</SolutionAreamm2>
+      <SolutionComponentCount>19</SolutionComponentCount>
+      <SolutionMaxHeightmm>10.67</SolutionMaxHeightmm>
+    </ConverterSpec>
+  </ConverterSpecs>
+  <ProgramUserInfos>
+    <ProgramUserInfo>
+      <LastRecordedSyncDate>2018-04-30T00:00:00</LastRecordedSyncDate>
+      <ReleaseType>Factory</ReleaseType>
+      <InstallationDate>2018-02-23T00:00:00</InstallationDate>
+      <LTpowerCADVer>2</LTpowerCADVer>
+      <LTpowerCADSubDesc>Release2</LTpowerCADSubDesc>
+      <LTpowerCADUpdateVer>55</LTpowerCADUpdateVer>
+      <LTpowerCADUpdateVerDate>2018-04-13T00:00:00</LTpowerCADUpdateVerDate>
+    </ProgramUserInfo>
+  </ProgramUserInfos>
+  <OutputRailDatas>
+    <OutputRailData>
+      <Freqmin>0</Freqmin>
+      <Freqmax>0</Freqmax>
+      <VinToCalc>48</VinToCalc>
+      <IoToCalc>20</IoToCalc>
+      <MinIoToCalc>0</MinIoToCalc>
+      <MaxVin>55</MaxVin>
+      <NomVin>48</NomVin>
+      <MinVin>30</MinVin>
+      <SwitchingFreq>506000</SwitchingFreq>
+      <OutputVol>12</OutputVol>
+      <OutputCur>20</OutputCur>
+      <NPh>1</NPh>
+      <NPhSlave>0</NPhSlave>
+      <NIc>1</NIc>
+      <Ta>25</Ta>
+      <InductorRipplePercentDesired>40</InductorRipplePercentDesired>
+      <Lo>2E-06</Lo>
+      <DCR>0.0012</DCR>
+      <InductorManufacturer>COILCRAFT</InductorManufacturer>
+      <InductorPartNumber>SER2011-202</InductorPartNumber>
+      <InductorLength>20.07</InductorLength>
+      <InductorWidth>19.56</InductorWidth>
+      <InductorHeight>10.67</InductorHeight>
+      <InductorUserNote />
+      <InductorIsat>37</InductorIsat>
+      <InductorIheat>40</InductorIheat>
+      <InductorTheat>40</InductorTheat>
+      <InductorThetaWA>17.8</InductorThetaWA>
+      <InductorCoreLoss>0.5</InductorCoreLoss>
+      <DcrDeratingEnabled>false</DcrDeratingEnabled>
+      <Cin>0</Cin>
+      <CinESR>0</CinESR>
+      <CinESL>0</CinESL>
+      <NCin>1</NCin>
+      <CinLength>0</CinLength>
+      <CinWidth>0</CinWidth>
+      <CinHeight>0</CinHeight>
+      <CinPackage />
+      <CinPartNumber />
+      <CinManufacturer />
+      <CinUserNote />
+      <CinAtHalfRated>0</CinAtHalfRated>
+      <CinAtFullRated>0</CinAtFullRated>
+      <CinAtNoVoltage>0</CinAtNoVoltage>
+      <CinDerated>0</CinDerated>
+      <CinVoltageRating>0</CinVoltageRating>
+      <CinCeramic>4.3306E-06</CinCeramic>
+      <CinCeramicESR>0.004</CinCeramicESR>
+      <CinCeramicESL>1.87E-09</CinCeramicESL>
+      <NCinCeramic>6</NCinCeramic>
+      <CinCeramicLength>5.7</CinCeramicLength>
+      <CinCeramicWidth>5</CinCeramicWidth>
+      <CinCeramicHeight>2.5</CinCeramicHeight>
+      <CinCeramicPackage>2220</CinCeramicPackage>
+      <CinCeramicPartNumber>C5750X7S2A106K230KB</CinCeramicPartNumber>
+      <CinCeramicManufacturer>TDK</CinCeramicManufacturer>
+      <CinCeramicUserNote />
+      <CinCeramicAtHalfRated>3.987E-06</CinCeramicAtHalfRated>
+      <CinCeramicAtFullRated>1.676E-06</CinCeramicAtFullRated>
+      <CinCeramicAtNoVoltage>1E-05</CinCeramicAtNoVoltage>
+      <CinCeramicDerated>4.3306000000000005E-06</CinCeramicDerated>
+      <CinCeramicVoltageRating>100</CinCeramicVoltageRating>
+      <InputLCFilterEnabled>false</InputLCFilterEnabled>
+      <EMISpec>CISPR22</EMISpec>
+      <EMIAttenuationMargin>0</EMIAttenuationMargin>
+      <Cf_inManufacturer />
+      <Cf_inPartNumber />
+      <Cf_in>0</Cf_in>
+      <ESRCf_in>0</ESRCf_in>
+      <ESLCf_in>0</ESLCf_in>
+      <NumCf_in>1</NumCf_in>
+      <Cf_inAtHalfRated>0</Cf_inAtHalfRated>
+      <Cf_inAtFullRated>0</Cf_inAtFullRated>
+      <Cf_inAtNoVoltage>0</Cf_inAtNoVoltage>
+      <Cf_inDerated>0</Cf_inDerated>
+      <Cf_inVoltageRating>0</Cf_inVoltageRating>
+      <Lf_inManufacturer />
+      <Lf_inPartNumber />
+      <Lf_in>0</Lf_in>
+      <ESRLf_in>0</ESRLf_in>
+      <EPCLf_in>0</EPCLf_in>
+      <Cd_inManufacturer />
+      <Cd_inPartNumber />
+      <Cd_in>0</Cd_in>
+      <ESRCd_in>0</ESRCd_in>
+      <ESLCd_in>0</ESLCd_in>
+      <NumCd_in>1</NumCd_in>
+      <Cd_inAtHalfRated>0</Cd_inAtHalfRated>
+      <Cd_inAtFullRated>0</Cd_inAtFullRated>
+      <Cd_inAtNoVoltage>0</Cd_inAtNoVoltage>
+      <Cd_inDerated>0</Cd_inDerated>
+      <Cd_inVoltageRating>0</Cd_inVoltageRating>
+      <Rd1_in>0</Rd1_in>
+      <Cd3Manufacturer />
+      <Cd3PartNumber />
+      <Cd3>0</Cd3>
+      <ESRCd3>0</ESRCd3>
+      <ESLCd3>0</ESLCd3>
+      <NumCd3>1</NumCd3>
+      <Cd3AtHalfRated>0</Cd3AtHalfRated>
+      <Cd3AtFullRated>0</Cd3AtFullRated>
+      <Cd3AtNoVoltage>0</Cd3AtNoVoltage>
+      <Cd3Derated>0</Cd3Derated>
+      <Cd3VoltageRating>0</Cd3VoltageRating>
+      <Rd3>0</Rd3>
+      <Cob>0.00015</Cob>
+      <ESRb>0.05</ESRb>
+      <ESLb>2.3E-09</ESLb>
+      <Numb>2</Numb>
+      <BulkCapacitorManufacturer>PANASONIC</BulkCapacitorManufacturer>
+      <BulkCapacitorPartNumber>16TQC150MYF</BulkCapacitorPartNumber>
+      <BulkCapacitorLength>7.3</BulkCapacitorLength>
+      <BulkCapacitorWidth>4.3</BulkCapacitorWidth>
+      <BulkCapacitorHeight>2.8</BulkCapacitorHeight>
+      <BulkCapacitorPackage>D3L</BulkCapacitorPackage>
+      <BulkCapacitorUserNote />
+      <CobAtHalfRated>0.00015</CobAtHalfRated>
+      <CobAtFullRated>0.00015</CobAtFullRated>
+      <CobAtNoVoltage>0.00015</CobAtNoVoltage>
+      <CobDerated>0.00015</CobDerated>
+      <CobVoltageRating>16</CobVoltageRating>
+      <Coc>1.425E-05</Coc>
+      <ESRc>0.0018000000000000002</ESRc>
+      <ESLc>1.14E-09</ESLc>
+      <Numc>4</Numc>
+      <CeramicCapacitorManufacturer>TDK</CeramicCapacitorManufacturer>
+      <CeramicCapacitorPartNumber>C3225X5R1C226M</CeramicCapacitorPartNumber>
+      <CeramicCapacitorLength>3.2</CeramicCapacitorLength>
+      <CeramicCapacitorWidth>2.5</CeramicCapacitorWidth>
+      <CeramicCapacitorHeight>2.8</CeramicCapacitorHeight>
+      <CeramicCapacitorPackage>1210</CeramicCapacitorPackage>
+      <CeramicCapacitorUserNote />
+      <CocAtHalfRated>1.79E-05</CocAtHalfRated>
+      <CocAtFullRated>1.06E-05</CocAtFullRated>
+      <CocAtNoVoltage>2.2E-05</CocAtNoVoltage>
+      <CocDerated>1.425E-05</CocDerated>
+      <CocVoltageRating>16</CocVoltageRating>
+      <CapacitorDeratingEnabled>true</CapacitorDeratingEnabled>
+      <LocalCob>0</LocalCob>
+      <LocalESRb>0</LocalESRb>
+      <LocalESLb>0</LocalESLb>
+      <LocalNumb>0</LocalNumb>
+      <LocalBulkCapacitorManufacturer />
+      <LocalBulkCapacitorPartNumber />
+      <LocalBulkCapacitorLength>0</LocalBulkCapacitorLength>
+      <LocalBulkCapacitorWidth>0</LocalBulkCapacitorWidth>
+      <LocalBulkCapacitorHeight>0</LocalBulkCapacitorHeight>
+      <LocalBulkCapacitorPackage />
+      <LocalBulkCapacitorUserNote />
+      <LocalCobAtHalfRated>0</LocalCobAtHalfRated>
+      <LocalCobAtFullRated>0</LocalCobAtFullRated>
+      <LocalCobAtNoVoltage>0</LocalCobAtNoVoltage>
+      <LocalCobDerated>0</LocalCobDerated>
+      <LocalCobVoltageRating>0</LocalCobVoltageRating>
+      <LocalCoc>0</LocalCoc>
+      <LocalESRc>0</LocalESRc>
+      <LocalESLc>0</LocalESLc>
+      <LocalNumc>0</LocalNumc>
+      <LocalCeramicCapacitorManufacturer />
+      <LocalCeramicCapacitorPartNumber />
+      <LocalCeramicCapacitorLength>0</LocalCeramicCapacitorLength>
+      <LocalCeramicCapacitorWidth>0</LocalCeramicCapacitorWidth>
+      <LocalCeramicCapacitorHeight>0</LocalCeramicCapacitorHeight>
+      <LocalCeramicCapacitorPackage />
+      <LocalCeramicCapacitorUserNote />
+      <LocalCocAtHalfRated>0</LocalCocAtHalfRated>
+      <LocalCocAtFullRated>0</LocalCocAtFullRated>
+      <LocalCocAtNoVoltage>0</LocalCocAtNoVoltage>
+      <LocalCocDerated>0</LocalCocDerated>
+      <LocalCocVoltageRating>0</LocalCocVoltageRating>
+      <Cth>4.7000000000000007E-09</Cth>
+      <Cthp>3.3000000000000005E-10</Cthp>
+      <Rth>10000</Rth>
+      <Ccomp>0</Ccomp>
+      <RfbTopActual>140000</RfbTopActual>
+      <RfbBotActual>10000</RfbBotActual>
+      <RfbBot3Actual>0</RfbBot3Actual>
+      <CfbTopActual>2.2000000000000005E-11</CfbTopActual>
+      <CfbBotActual>0</CfbBotActual>
+      <RfbBotTolerance>0</RfbBotTolerance>
+      <RfbTopTolerance>0</RfbTopTolerance>
+      <FcDesired>156666.66666666666</FcDesired>
+      <PhaseBoostDesired>10</PhaseBoostDesired>
+      <PhaseMarginDesired>60</PhaseMarginDesired>
+      <Ilim>0.05</Ilim>
+      <VRNG>0</VRNG>
+      <MarginIoLimit>120</MarginIoLimit>
+      <Rsense>0.0015</Rsense>
+      <RsenseLength>6.4</RsenseLength>
+      <RsenseWidth>3.2</RsenseWidth>
+      <RsenseHeight>0.64</RsenseHeight>
+      <RsensePackage>2512 (3W)</RsensePackage>
+      <RsensePartNumber>ERJMS4SF1M5U</RsensePartNumber>
+      <RsenseManufacturer>PANASONIC</RsenseManufacturer>
+      <RsenseUserNote />
+      <RsenseFilterR>20</RsenseFilterR>
+      <RsenseFilterC>1E-09</RsenseFilterC>
+      <SenseC>4.7E-08</SenseC>
+      <SenseRp>7150</SenseRp>
+      <SenseRs>4019.9999999999995</SenseRs>
+      <SenseRsDC>0</SenseRsDC>
+      <SenseRsDC2>0</SenseRsDC2>
+      <SenseCDC>0</SenseCDC>
+      <Vforward>0</Vforward>
+      <SchottkyVendor />
+      <SchottkyPartName />
+      <NumOfSchottky>1</NumOfSchottky>
+      <SchottkyVRRM>0</SchottkyVRRM>
+      <SchottkyID>0</SchottkyID>
+      <SchottkyPackage />
+      <SchottkyType />
+      <SchottkyLength>0</SchottkyLength>
+      <SchottkyWidth>0</SchottkyWidth>
+      <SchottkyHeight>0</SchottkyHeight>
+      <SchottkyUserNote />
+      <CurrentSensingConfigurationType>1</CurrentSensingConfigurationType>
+      <SynchronousOrNonSynchronousConfigurationType>0</SynchronousOrNonSynchronousConfigurationType>
+      <CompConfigurationType>0</CompConfigurationType>
+      <SwitchingFreqDesired>506000</SwitchingFreqDesired>
+      <Vfreq>0</Vfreq>
+      <Rfreq>34000</Rfreq>
+      <Vb>0</Vb>
+      <Rfreq2>0</Rfreq2>
+      <Vvon>0</Vvon>
+      <LoadStepLow>0</LoadStepLow>
+      <LoadStepHigh>5</LoadStepHigh>
+      <LoadStepSlewRate>10000000</LoadStepSlewRate>
+      <SlopeCompSlopePointForDesign>0</SlopeCompSlopePointForDesign>
+      <TonMin>4.5E-08</TonMin>
+      <ToffMin>0</ToffMin>
+      <ProjectName>Demo Board DC2736A</ProjectName>
+      <ProjectDate>9/2018</ProjectDate>
+      <ProjectDesigner>YL</ProjectDesigner>
+      <DividerSelection />
+      <IlimSelection />
+      <RinSense>0</RinSense>
+      <RinSenseLength>0</RinSenseLength>
+      <RinSenseWidth>0</RinSenseWidth>
+      <RinSenseHeight>0</RinSenseHeight>
+      <RinSensePackage></RinSensePackage>
+      <RinSensePartNumber />
+      <RinSenseManufacturer />
+      <RinSenseUserNote />
+      <RoutSense>0</RoutSense>
+      <RoutSenseLength>0</RoutSenseLength>
+      <RoutSenseWidth>0</RoutSenseWidth>
+      <RoutSenseHeight>0</RoutSenseHeight>
+      <RoutSensePackage></RoutSensePackage>
+      <RoutSensePartNumber />
+      <RoutSenseManufacturer />
+      <RoutSenseUserNote />
+      <VinStartUp>30</VinStartUp>
+      <VSD_Desired>30</VSD_Desired>
+      <RHYST>0</RHYST>
+      <VRUN />
+      <RTUV>0</RTUV>
+      <RBUV>0</RBUV>
+      <VOV_Latch_Desired>30</VOV_Latch_Desired>
+      <VOV_NonLatch_Desired>30</VOV_NonLatch_Desired>
+      <RBOV>0</RBOV>
+      <RMOV>0</RMOV>
+      <RTOV>0</RTOV>
+      <RTOV_OVP>0</RTOV_OVP>
+      <RBOV_OVP>0</RBOV_OVP>
+      <COV_OVP>0</COV_OVP>
+      <VOVP_Desired>0</VOVP_Desired>
+      <PartLength>4</PartLength>
+      <PartWidth>3</PartWidth>
+      <PartHeight>0.8</PartHeight>
+      <PartUserNote />
+      <FootprintClearanceFactor>1</FootprintClearanceFactor>
+      <SenseCdcr2>0</SenseCdcr2>
+      <R1>0</R1>
+      <C3>0</C3>
+      <R3>0</R3>
+      <C1>0</C1>
+      <R2>0</R2>
+      <C2>0</C2>
+      <Z1>0</Z1>
+      <Z2>0</Z2>
+      <P1>0</P1>
+      <P2>0</P2>
+      <CompensatorGain>0</CompensatorGain>
+      <RLIM>0</RLIM>
+      <Vbias>0</Vbias>
+      <Gm>0</Gm>
+      <VinD>30</VinD>
+      <RPROG>0</RPROG>
+      <VrefIn>0</VrefIn>
+      <ExtvccVoltage>0</ExtvccVoltage>
+      <VoRipplePkPkMaxTargetPercent>1</VoRipplePkPkMaxTargetPercent>
+      <TotalVoRippleMaxTargetPercent>3</TotalVoRippleMaxTargetPercent>
+      <VinRangeLimitsDisabled>false</VinRangeLimitsDisabled>
+      <VoutMaxLimitsDisabled>false</VoutMaxLimitsDisabled>
+      <IswMaxLimitsDisabled>false</IswMaxLimitsDisabled>
+      <FswRangeLimitsDisabled>false</FswRangeLimitsDisabled>
+      <RdsOnDeratingEnabled>false</RdsOnDeratingEnabled>
+      <PartNameControlStage1>GS61008P</PartNameControlStage1>
+      <NumFetsControlStage1>2</NumFetsControlStage1>
+      <RdsonControlStage1>0.0079</RdsonControlStage1>
+      <Rdson1ControlStage1>0.008</Rdson1ControlStage1>
+      <Vgs1ControlStage1>5</Vgs1ControlStage1>
+      <Vgs2ControlStage1>6</Vgs2ControlStage1>
+      <QgControlStage1>1.11E-08</QgControlStage1>
+      <QgsControlStage1>4.5E-09</QgsControlStage1>
+      <QgdControlStage1>1.5E-09</QgdControlStage1>
+      <CossControlStage1>2.8E-10</CossControlStage1>
+      <Rdson2ControlStage1>0.007</Rdson2ControlStage1>
+      <Qg2ControlStage1>1.2E-08</Qg2ControlStage1>
+      <VmillerControlStage1>3</VmillerControlStage1>
+      <VthControlStage1>1.3</VthControlStage1>
+      <RgControlStage1>0.77</RgControlStage1>
+      <VendorControlStage1>GaN Systems</VendorControlStage1>
+      <VdssControlStage1>100</VdssControlStage1>
+      <VdiodeControlStage1>1</VdiodeControlStage1>
+      <LengthControlStage1>7.6</LengthControlStage1>
+      <WidthControlStage1>4.6</WidthControlStage1>
+      <HeightControlStage1>0.51</HeightControlStage1>
+      <PackageControlStage1>7.6x4.6</PackageControlStage1>
+      <UserNoteControlStage1 />
+      <ThetaJXControlStage1>0</ThetaJXControlStage1>
+      <PartNameSyncStage1>GS61008P</PartNameSyncStage1>
+      <NumFetsSyncStage1>2</NumFetsSyncStage1>
+      <RdsonSyncStage1>0.0079</RdsonSyncStage1>
+      <Rdson1SyncStage1>0.008</Rdson1SyncStage1>
+      <Vgs1SyncStage1>5</Vgs1SyncStage1>
+      <Vgs2SyncStage1>6</Vgs2SyncStage1>
+      <QgSyncStage1>1.11E-08</QgSyncStage1>
+      <RgSyncStage1>0.77</RgSyncStage1>
+      <VdiodeSyncStage1>1</VdiodeSyncStage1>
+      <VendorSyncStage1>GaN Systems</VendorSyncStage1>
+      <VdssSyncStage1>100</VdssSyncStage1>
+      <QgdSyncStage1>1.5E-09</QgdSyncStage1>
+      <CossSyncStage1>2.8E-10</CossSyncStage1>
+      <Rdson2SyncStage1>0.007</Rdson2SyncStage1>
+      <Qg2SyncStage1>1.2E-08</Qg2SyncStage1>
+      <QgsSyncStage1>4.5E-09</QgsSyncStage1>
+      <VmillerSyncStage1>3</VmillerSyncStage1>
+      <VthSyncStage1>1.3</VthSyncStage1>
+      <LengthSyncStage1>7.6</LengthSyncStage1>
+      <WidthSyncStage1>4.6</WidthSyncStage1>
+      <HeightSyncStage1>0.51</HeightSyncStage1>
+      <PackageSyncStage1 />
+      <UserNoteSyncStage1 />
+      <ThetaJXSyncStage1>0</ThetaJXSyncStage1>
+      <PartNameControlStage2 />
+      <NumFetsControlStage2>1</NumFetsControlStage2>
+      <RdsonControlStage2>0</RdsonControlStage2>
+      <Rdson1ControlStage2>0</Rdson1ControlStage2>
+      <Vgs1ControlStage2>0</Vgs1ControlStage2>
+      <Vgs2ControlStage2>0</Vgs2ControlStage2>
+      <QgControlStage2>0</QgControlStage2>
+      <QgsControlStage2>0</QgsControlStage2>
+      <QgdControlStage2>0</QgdControlStage2>
+      <CossControlStage2>0</CossControlStage2>
+      <Rdson2ControlStage2>0</Rdson2ControlStage2>
+      <Qg2ControlStage2>0</Qg2ControlStage2>
+      <VmillerControlStage2>0</VmillerControlStage2>
+      <VthControlStage2>0</VthControlStage2>
+      <RgControlStage2>0</RgControlStage2>
+      <VendorControlStage2 />
+      <VdssControlStage2>0</VdssControlStage2>
+      <VdiodeControlStage2>0</VdiodeControlStage2>
+      <LengthControlStage2>0</LengthControlStage2>
+      <WidthControlStage2>0</WidthControlStage2>
+      <HeightControlStage2>0</HeightControlStage2>
+      <PackageControlStage2 />
+      <UserNoteControlStage2 />
+      <ThetaJXControlStage2>0</ThetaJXControlStage2>
+      <PartNameSyncStage2 />
+      <NumFetsSyncStage2>1</NumFetsSyncStage2>
+      <RdsonSyncStage2>0</RdsonSyncStage2>
+      <Rdson1SyncStage2>0</Rdson1SyncStage2>
+      <Vgs1SyncStage2>0</Vgs1SyncStage2>
+      <Vgs2SyncStage2>0</Vgs2SyncStage2>
+      <QgSyncStage2>0</QgSyncStage2>
+      <RgSyncStage2>0</RgSyncStage2>
+      <VdiodeSyncStage2>0</VdiodeSyncStage2>
+      <VendorSyncStage2 />
+      <VdssSyncStage2>0</VdssSyncStage2>
+      <QgdSyncStage2>0</QgdSyncStage2>
+      <CossSyncStage2>0</CossSyncStage2>
+      <Rdson2SyncStage2>0</Rdson2SyncStage2>
+      <Qg2SyncStage2>0</Qg2SyncStage2>
+      <QgsSyncStage2>0</QgsSyncStage2>
+      <VmillerSyncStage2>0</VmillerSyncStage2>
+      <VthSyncStage2>0</VthSyncStage2>
+      <LengthSyncStage2>0</LengthSyncStage2>
+      <WidthSyncStage2>0</WidthSyncStage2>
+      <HeightSyncStage2>0</HeightSyncStage2>
+      <PackageSyncStage2 />
+      <UserNoteSyncStage2 />
+      <ThetaJXSyncStage2>0</ThetaJXSyncStage2>
+      <Cobf>0</Cobf>
+      <ESRbf>0</ESRbf>
+      <ESLbf>0</ESLbf>
+      <Numbf>0</Numbf>
+      <BulkFilterCapacitorManufacturer />
+      <BulkFilterCapacitorPartNumber />
+      <BulkFilterCapacitorLength>0</BulkFilterCapacitorLength>
+      <BulkFilterCapacitorWidth>0</BulkFilterCapacitorWidth>
+      <BulkFilterCapacitorHeight>0</BulkFilterCapacitorHeight>
+      <BulkFilterCapacitorPackage />
+      <BulkFilterCapacitorUserNote />
+      <CobfAtHalfRated>0</CobfAtHalfRated>
+      <CobfAtFullRated>0</CobfAtFullRated>
+      <CobfAtNoVoltage>0</CobfAtNoVoltage>
+      <CobfDerated>0</CobfDerated>
+      <CobfVoltageRating>0</CobfVoltageRating>
+      <Cocf>0</Cocf>
+      <ESRcf>0</ESRcf>
+      <ESLcf>0</ESLcf>
+      <Numcf>0</Numcf>
+      <CeramicFilterCapacitorManufacturer />
+      <CeramicFilterCapacitorPartNumber />
+      <CeramicFilterCapacitorLength>0</CeramicFilterCapacitorLength>
+      <CeramicFilterCapacitorWidth>0</CeramicFilterCapacitorWidth>
+      <CeramicFilterCapacitorHeight>0</CeramicFilterCapacitorHeight>
+      <CeramicFilterCapacitorPackage />
+      <CeramicFilterCapacitorUserNote />
+      <CocfAtHalfRated>0</CocfAtHalfRated>
+      <CocfAtFullRated>0</CocfAtFullRated>
+      <CocfAtNoVoltage>0</CocfAtNoVoltage>
+      <CocfDerated>0</CocfDerated>
+      <CocfVoltageRating>0</CocfVoltageRating>
+      <Ls>0</Ls>
+      <DCRs>0</DCRs>
+      <FilterInductorManufacturer />
+      <FilterInductorPartNumber />
+      <FilterInductorLength>0</FilterInductorLength>
+      <FilterInductorWidth>0</FilterInductorWidth>
+      <FilterInductorHeight>0</FilterInductorHeight>
+      <FilterInductorUserNote />
+      <OutputLCFilterEnabled>false</OutputLCFilterEnabled>
+      <OutputLCFilterSensingIsLocal>false</OutputLCFilterSensingIsLocal>
+      <OutputLCFilterSensingIsRemote>false</OutputLCFilterSensingIsRemote>
+      <Efficiency>0.9638</Efficiency>
+      <VoutRipplePercent>0.0016906873</VoutRipplePercent>
+      <LossCurveA2>0.00665</LossCurveA2>
+      <LossCurveA1>0.1926672603</LossCurveA1>
+      <LossCurveA0>2.5097387825</LossCurveA0>
+      <LossCurveR2>1</LossCurveR2>
+      <LossCurveFit_CMatrix_RowB2A2>0,0,0,0.3594322919;1,506000,8,12,18,30,48,55,20</LossCurveFit_CMatrix_RowB2A2>
+      <LossCurveFit_CMatrix_RowB1A2>0,0,0,0.3319769381;1,506000,8,12,18,30,48,55,20</LossCurveFit_CMatrix_RowB1A2>
+      <LossCurveFit_CMatrix_RowB0A2>0,0,0.00665,0.3072952614;1,506000,8,12,18,30,48,55,20</LossCurveFit_CMatrix_RowB0A2>
+      <LossCurveFit_CMatrix_RowB2A1>0,0,0,0.2482810185;1,506000,8,12,18,30,48,55,20</LossCurveFit_CMatrix_RowB2A1>
+      <LossCurveFit_CMatrix_RowB1A1>0,0,0.0035922346,0.2097978521;1,506000,8,12,18,30,48,55,20</LossCurveFit_CMatrix_RowB1A1>
+      <LossCurveFit_CMatrix_RowB0A1>0,0,0.02024,0.1806297336;1,506000,8,12,18,30,48,55,20</LossCurveFit_CMatrix_RowB0A1>
+      <LossCurveFit_CMatrix_RowB2A0>3.871E-07,-1.72825E-05,0.0005805584,0.8075304272;1,506000,8,12,18,30,48,55,20</LossCurveFit_CMatrix_RowB2A0>
+      <LossCurveFit_CMatrix_RowB1A0>-9.7577E-06,0.0006624274,0.0120658994,0.6289773384;1,506000,8,12,18,30,48,55,20</LossCurveFit_CMatrix_RowB1A0>
+      <LossCurveFit_CMatrix_RowB0A0>-0.0003049288,0.0032003846,0.6372479955,0.3542685914;1,506000,8,12,18,30,48,55,20</LossCurveFit_CMatrix_RowB0A0>
+      <ICThetaJA>0</ICThetaJA>
+    </OutputRailData>
+  </OutputRailDatas>
+  <NotationLabelControls>
+    <NotationLabelControl>
+      <Left>584</Left>
+      <Top>528</Top>
+      <Width>204</Width>
+      <Height>68</Height>
+      <Text>Note: an external NTS12100 diode is placed in parallel with Mbot1.</Text>
+      <Background>#00FFFFFF</Background>
+      <FontFamily>Segoe UI</FontFamily>
+      <FontSize>16</FontSize>
+      <Foreground>#FF0000FF</Foreground>
+      <FontStyle>Normal</FontStyle>
+      <FontWeight>Normal</FontWeight>
+    </NotationLabelControl>
+    <NotationLabelControl>
+      <Left>944</Left>
+      <Top>756</Top>
+      <Width>500</Width>
+      <Height>44</Height>
+      <Text>Analog Devices Inc. Demo Board DC2736A</Text>
+      <Background>#00FFFFFF</Background>
+      <FontFamily>Segoe UI</FontFamily>
+      <FontSize>21.75</FontSize>
+      <Foreground>#FF800000</Foreground>
+      <FontStyle>Normal</FontStyle>
+      <FontWeight>Bold</FontWeight>
+    </NotationLabelControl>
+    <NotationLabelControl>
+      <Left>988</Left>
+      <Top>804</Top>
+      <Width>408</Width>
+      <Height>40</Height>
+      <Text>Vin=30-55V, Vo=12V, Io=20A, 500kHz
+Using GaN FETs</Text>
+      <Background>#00FFFFFF</Background>
+      <FontFamily>Segoe UI</FontFamily>
+      <FontSize>16</FontSize>
+      <Foreground>#FF0000FF</Foreground>
+      <FontStyle>Normal</FontStyle>
+      <FontWeight>Normal</FontWeight>
+    </NotationLabelControl>
+  </NotationLabelControls>
+</Root>

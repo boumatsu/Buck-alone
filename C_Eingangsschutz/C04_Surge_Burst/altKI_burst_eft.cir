@@ -1,0 +1,29 @@
+* altKI – Entwurf einer früheren KI-Sitzung, ungeprüft. Nur zur Gegenprobe, nicht als Vorgabe übernehmen.
+* EFT Burst 2kV DM - echte Modelle, DC ueber Ldc
+.include "..\..\02_Modelle\LTspice\WE-XHMI\WE-XHMI.lib"
+.include "..\..\02_Modelle\LTspice\WE-TVSP\WE-TVSP_Bidirectional.lib"
+.include "..\..\02_Modelle\LTspice\altKI_project_models.lib"
+Vdc vd 0 24
+Ldc vd a 1m
+Bsrc gen 0 V = 2314*(exp(-time/72n)-exp(-time/2.3n))
+Rg gen a0 50
+Ccdn a0 a 33n
+Rcmc a a2 30m
+Xmov a2 0 MOV_820542501
+Xl1 a2 b 1510_74439370220_22u
+Xtvs b 0 DO-214AB_824551281
+Rpass b out 26m
+Xcap1 out 0 ELKO_47u_35V
+Xcap2 out 0 ELKO_47u_35V
+Xcino out 0 MLCC_4u7_100V
+Xl2 out c 1510_74439370220_22u
+Xcin c 0 MLCC_4u7_100V
+Rload c 0 16
+.tran 0 5u 0 0.2n
+.meas tran Va_rest AVG V(a2) FROM 4u TO 5u
+.meas tran Vgen_pk MAX V(gen)
+.meas tran Vmov_pk MAX V(a2)
+.meas tran Vtvs_pk MAX V(b)
+.meas tran Vbuck_pk MAX V(c)
+.meas tran Vbuck_min MIN V(c)
+.end

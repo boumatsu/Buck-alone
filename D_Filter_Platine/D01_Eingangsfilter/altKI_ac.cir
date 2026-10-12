@@ -1,0 +1,33 @@
+* altKI – Entwurf einer früheren KI-Sitzung, ungeprüft. Nur zur Gegenprobe, nicht als Vorgabe übernehmen.
+* DM conducted-emission model: converter input ripple current (1A AC) -> filter -> LISN 50 ohm
+Iac 0 c AC 1
+Cin c cin1 16.5u
+Rcin cin1 cin2 3m
+Lcin cin2 0 1n
+Cd c cd1 94u
+Rd cd1 cd2 0.2
+Ld cd2 0 5n
+Rl2 c1 c 13m
+L2 out c1 4.7u
+Cw2 out c 8p
+Ce out ce1 94u
+Re ce1 ce2 0.2
+Le ce2 0 5n
+Rpass out b 24m
+Ctvs b 0 2n
+Rl1 b1 b 13.3m
+L1 a b1 22u
+Cw a b 8p
+Cmov a mv 7.6n
+Lmov mv 0 10n
+Rf a2 a 14m
+Lf a a3 20n
+Rlisn a2 0 50
+.ac dec 100 100k 100Meg
+.control
+set noaskquit
+ac dec 100 100k 100Meg
+wrdata o_ac.txt v(a2)
+quit
+.endc
+.end

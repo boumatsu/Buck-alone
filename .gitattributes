@@ -1,0 +1,13 @@
+# Zeilenenden von Text automatisch angleichen
+* text=auto
+# Binaerdateien
+*.pdf binary
+*.zip binary
+# LTspice/KiCad-Dateien unveraendert lassen (LTspice speichert teils UTF-16)
+*.asc -text
+*.asy -text
+*.cir -text
+*.lib -text
+*.sub -text
+*.ltpc -text
+*.kicad_* -text

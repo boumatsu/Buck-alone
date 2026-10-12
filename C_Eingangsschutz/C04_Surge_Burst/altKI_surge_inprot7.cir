@@ -1,0 +1,48 @@
+* altKI – Entwurf einer früheren KI-Sitzung, ungeprüft. Nur zur Gegenprobe, nicht als Vorgabe übernehmen.
+* Surge + LTC4364 (VDMOS-Proxy, DC bis 12ms, Surge bei 12ms)
+.lib LTC4364-2.sub
+.include standard.mos
+.include standard.dio
+.include "..\..\02_Modelle\LTspice\WE-XHMI\WE-XHMI.lib"
+.include "..\..\02_Modelle\LTspice\WE-TVSP\WE-TVSP_Bidirectional.lib"
+.include "..\..\02_Modelle\LTspice\altKI_project_models.lib"
+Bsrc gen 0 V = min(1,time/500u)*24 + (time>12m)*(1037*(exp(-(time-12m)/68.2u)-exp(-(time-12m)/0.405u)))
+Rgen gen a1 2
+Xf a1 a2 FUSE_5A
+Rcmc a2 a3 30m
+Xmov a3 0 MOV_820542501
+Xl1 a3 b 1510_74439370220_22u
+Xtvs b 0 DO-214AB_824551281
+M1 b m1g src src BSC082N10LS
+M2 sr dg src src BSC082N10LS
+Rsns sr out 10m
+R5 hg m1g 10
+Chg hg 0 6.8n
+Dgz1 src m1g DZ_15V0
+Dgz2 src dg DZ_15V0
+R9 b vcc 2.2k
+C3 vcc 0 0.1u
+R7 out enout 100k
+R8 out flt 100k
+Xcap1 out 0 ELKO_47u_35V
+Xcap2 out 0 ELKO_47u_35V
+Xcino out 0 MLCC_4u7_100V
+Xl2 out c 1510_74439370220_22u
+Xcin c 0 MLCC_4u7_100V
+Rload c 0 16
+R1U b uv 220k
+R2U uv ov 8.2k
+R3U ov 0 10k
+R5b out fb 100k
+R6 fb 0 4.7k
+Ctmr tmr 0 4.7n
+XU1 out sr dg src hg vcc vcc uv ov 0 flt enout tmr fb LTC4364-2
+.tran 0 12.6m 0 200n
+.meas tran Vvcc_dc AVG V(vcc) FROM 11m TO 12m
+.meas tran Vhg_dc AVG V(hg) FROM 11m TO 12m
+.meas tran Vout_dc AVG V(out) FROM 11m TO 12m
+.meas tran Vout_pk MAX V(out) FROM 12m TO 12.6m
+.meas tran Vbuck_pk MAX V(c) FROM 12m TO 12.6m
+.meas tran Vb_pk MAX V(b) FROM 12m TO 12.6m
+.meas tran Vm1ds_pk MAX (V(b)-V(src)) FROM 12m TO 12.6m
+.end

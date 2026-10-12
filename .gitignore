@@ -1,0 +1,21 @@
+# LTspice: Ergebnisse und erzeugte Dateien (jederzeit aus .asc/.cir neu erzeugbar, teils > 100 MB)
+*.raw
+*.log
+*.net
+*.fft
+*.op.raw
+*.log.raw
+# Python
+__pycache__/
+*.pyc
+# KiCad
+*-backups/
+fp-info-cache
+*.lck
+_autosave-*
+# Office / System
+~$*
+.~lock.*
+Thumbs.db
+desktop.ini
+.DS_Store
