@@ -2,7 +2,7 @@
 
 Nicht isolierter DC/DC-Wandler (Buck) mit dem LTC7800: **22…26 V → 12 V / 3 A**, mit Eingangsschutz (Verpolung, Überstrom, Surge 1 kV, Burst 2 kV), Ausgangs-Überstromschutz und EMV-Filter. Budget 100 € netto. Details: [`00_Projekt/00_Projektkontext.md`](00_Projekt/00_Projektkontext.md).
 
-Dieses Repo nutze ich allein, zusammen mit ein bis zwei KI-Assistenten. Das Gruppen-Repo ist [boumatsu/LTC7800-Buck](https://github.com/boumatsu/LTC7800-Buck); Ergebnisse, die fertig sind, übertrage ich dorthin.
+Dieses Repo ist mein eigener Arbeitsstand: Ich bearbeite hier das ganze Projekt allein bzw. mit Hilfe von ein bis zwei KI-Assistenten – unabhängig vom Gruppen-Repo [boumatsu/LTC7800-Buck](https://github.com/boumatsu/LTC7800-Buck). Einzelne Ergebnisse gebe ich nur dann an die Gruppe weiter, wenn es passt; eine Pflicht zum Abgleich gibt es nicht.
 
 ## Einstieg
 - **Aktueller Stand, was gerade läuft, nächste Schritte:** [`STATUS.md`](STATUS.md)
