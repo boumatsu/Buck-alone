@@ -30,8 +30,9 @@ Hinweis: `00_Projektkontext.md` beschreibt das Gruppenprojekt (z. B. F5 „Wer �
 ## 1 Zuerst lesen
 1. `README.md` (Überblick) und `STATUS.md` (Stand, Übergaben)
 2. `00_Projekt/00_Projektkontext.md` (Anforderungen, Regeln, Schnittstellen zwischen den Bereichen)
-3. `README.md` des Bereichs, an dem gearbeitet wird, und dessen Arbeitsanleitung (`A_Leistungsstufe.md`, `B_Regelung_und_IC-Beschaltung.md`, `C_Eingangsschutz.md`, `D_Filter_Anschluesse_Platine_Zusammenfuehrung.md`)
-4. Bei Bedarf `01_Quellen/01_Quellen_ApplicationNotes.md` (Quellen mit Kürzel Q01…Q72) und `03_Stueckliste/02_Bauteilkandidaten.md`
+3. `00_Projekt/Designablauf.md` (Reihenfolge des Entwurfs, Abhängigkeiten, was LTC7800, MOSFETs und die Blöcke davor und danach brauchen) – **nicht** an einem Schritt arbeiten, dessen Voraussetzungen dort noch offen sind, ohne den Nutzer darauf hinzuweisen
+4. `README.md` des Bereichs, an dem gearbeitet wird, und dessen Arbeitsanleitung (`A_Leistungsstufe.md`, `B_Regelung_und_IC-Beschaltung.md`, `C_Eingangsschutz.md`, `D_Filter_Anschluesse_Platine_Zusammenfuehrung.md`)
+5. Bei Bedarf `01_Quellen/01_Quellen_ApplicationNotes.md` (Quellen mit Kürzel Q01…Q72) und `03_Stueckliste/02_Bauteilkandidaten.md`
 
 ## 2 Wo liegt was
 | Was | Wo |
@@ -63,3 +64,8 @@ Dateien mit Präfix `altKI_` stammen aus einer früheren KI-Sitzung. Sie sind **
 - Ergebnisse in die Tabelle „Ergebnisse“ der Bereichs-README eintragen, Bauteile nur in `03_Stueckliste/`.
 - Dateien anderer Bereiche nur ändern, wenn darum gebeten wurde; Schnittstellenwerte (00 §8) mit dem anderen Bereich abstimmen.
 - Neue Quellen: nächste freie Q-Nummer, PDF nach `01_Quellen/`, Eintrag in die Quellenliste.
+
+## 6 Werkzeuge
+- **Simulation: LTspice.** Alle Simulationsnachweise in LTspice (`.asc` bevorzugt, `.cir` erlaubt). LTC7800 und LTC4364 sind in LTspice enthalten; weitere Modelle aus `02_Modelle/LTspice/`. Python oder ngspice nur für Hilfsrechnungen (z. B. Parameter-Sweeps, Auswertung), **nicht** als Nachweis.
+- **Schaltplan und PCB: KiCad.** Projekt in `04_Schaltplan_Layout/`, Bibliotheken in `02_Modelle/KiCad/`. Footprints immer gegen die Gehäusezeichnung im Datenblatt prüfen.
+- Andere Programme nur nach Rücksprache mit dem Nutzer.

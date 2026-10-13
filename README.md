@@ -7,6 +7,8 @@ Dieses Repo ist mein eigener Arbeitsstand: Ich bearbeite hier das ganze Projekt 
 ## Einstieg
 - **Aktueller Stand, was gerade läuft, nächste Schritte:** [`STATUS.md`](STATUS.md)
 - **Regeln für KIs (und für mich):** [`AGENTS.md`](AGENTS.md)
+- **Reihenfolge des Entwurfs, was jeder Block braucht:** [`00_Projekt/Designablauf.md`](00_Projekt/Designablauf.md)
+- **Werkzeuge:** LTspice (Simulation), KiCad (Schaltplan, PCB)
 
 ## Ordner
 ```
