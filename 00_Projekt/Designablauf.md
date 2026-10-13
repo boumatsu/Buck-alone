@@ -1,20 +1,27 @@
 # Designablauf – Reihenfolge, Abhängigkeiten, was jeder Block braucht
 
-Diese Datei beantwortet drei Fragen: **In welcher Reihenfolge** wird entworfen? **Was hängt wovon ab?** **Was braucht jeder Block** (LTC7800, MOSFETs, alles davor, alles danach)? Die Schrittnummern (A2, B6, C5 …) verweisen auf die Arbeitsanleitungen der Bereiche, Q-Nummern auf `01_Quellen/`. Grenzwerte und Formeln stehen in `00_Projektkontext.md` (§3–§8) mit Datenblattseiten – hier nur die Logik.
+Diese Datei beantwortet drei Fragen: **In welcher Reihenfolge** wird entworfen? **Was hängt wovon ab?** **Was braucht jeder Block** (Kern aus LTC7800 und Leistungsstufe, Eingangsseite, Ausgangsseite)? Die Schrittnummern (A2, B6, C5 …) verweisen auf die Arbeitsanleitungen der Bereiche, Q-Nummern auf `01_Quellen/`. Grenzwerte und Formeln stehen in `00_Projektkontext.md` (§3–§8) mit Datenblattseiten – hier nur die Logik.
 
 ---
 
-## 1 Signalfluss (von der Buchse bis zum Ausgang)
+## 1 Die drei Teile der Schaltung
 
 ```
-                        VOR dem Controller                                   Leistungsstufe + Controller                      NACH dem Controller
-J401/J402 ─► Verpolschutz ─► Überstrom ─► Surge/Burst-Klemmung ─► EMV-Filter ─► C_IN ─► Q101 (oben) ─► SW ─► L101 ─► R_SENSE ─► C_OUT ─► J403/J404
- (Buchse)       (C4)          (C5)          (C6, C8, C9)          (D4, D5)    (A10)    Q102 (unten) + D102              (A4)    (B5)   (Ausgang)
-                                                                                         ▲ TG/BG/BOOST                    │                │
-                                                                              LTC7800 U201 + Beschaltung ◄── SENSE± ──────┘   VFB-Teiler ◄─┘
-                                                                              (B2–B11: FB, ITH, SS, RUN, FREQ, MODE,          PGOOD → LED (D6)
-                                                                               ILIM, INTVCC/EXTVCC, Sense-Filter)             Messpunkte (D7)
+ EINGANGSSEITE (vor dem Buck)                              KERN: Buck = LTC7800 + Leistungsstufe                         AUSGANGSSEITE
+┌───────────────────────────────────────────────────┐ ┌──────────────────────────────────────────────────────────────┐ ┌──────────────────┐
+J401/J402 ─► Verpolschutz ─► Überstrom ─► Surge/Burst ─► EMV-Filter ─► C_IN ─► Q101 ─► SW ─► L101 ─► R_SENSE ─► C_OUT ─► J403/J404
+ (Buchse)       (C4)          (C5)       (C6, C8, C9)    (D4, D5)    (A10)   Q102 + D102            (A4)     (B5)      (Ausgang)
+                                                                               ▲ TG/BG/BOOST           │          │        PGOOD → LED (D6)
+                                                                       LTC7800 U201 ◄──── SENSE± ──────┘          │        Messpunkte (D7)
+                                                                       + Beschaltung ◄─── VFB-Teiler (B3) ◄───────┘        Überstrom R13
+                                                                       (ITH, SS, RUN, FREQ, MODE, ILIM, INTVCC/EXTVCC)
 ```
+
+- **Kern:** Spule, R_SENSE, C_IN, C_OUT, Rückführung und Kompensation gehören zum Regelkreis des LTC7800 und werden **zuerst** ausgelegt (Schritte 2–10). Fast alle anderen Werte hängen daran: Stromgrenze → Ratings aller Bauteile; Schaltfrequenz und C_IN → Filter; Eingangsstrom → Schutz.
+- **Eingangsseite:** schützt den Kern und filtert. Ihre Grenzen (höchste Spannung am Buck-Eingang) braucht der Kern früh als Vorgabe (Schritt 1), ausgelegt wird sie danach mit den Werten des Kerns (Schritte 11–12).
+- **Ausgangsseite:** nur Anschlüsse, Anzeige, Messpunkte und der Nachweis des Ausgangs-Überstromschutzes.
+
+Die Abschnitte 3–6 sind nach diesen Teilen sortiert, **nicht** nach der Arbeitsreihenfolge – die steht in §2.
 
 ---
 
@@ -22,33 +29,33 @@ J401/J402 ─► Verpolschutz ─► Überstrom ─► Surge/Burst-Klemmung ─�
 
 Grundregel: **Erst das festlegen, wovon viele andere Werte abhängen.** Wer mit der Kompensation oder dem Filter anfängt, rechnet später alles neu.
 
-| # | Schritt | Ordner | Braucht vorher | Liefert an |
-|---|---|---|---|---|
-| 0 | Vorgaben und Grenzen sammeln: V_IN 22–26 V, V_OUT 12 V, I_OUT 3 A, Surge 1 kV, Burst 2 kV, Budget, Bauteilregeln | `00_Projekt/` | Aufgabenstellung | alles |
-| 1 | **Schutzkonzept grob** (Variante A/B/C): höchste Spannung am Buck-Eingang | `C01`, `C05` | 0 | FET-Spannungsklasse, Nennspannung C_IN, VIN-Pin, Filter-C |
-| 2 | **Schaltfrequenz f** | `A01` | 0, 1 | L, C_IN, C_OUT, Filter, Verluste, R_FREQ |
-| 3 | **Spule L101**: L aus Rippelstrom-Ziel, I_SAT, DCR | `A01` | 2 | R_SENSE (I_PK), Kompensation, Kurzschlussstrom |
-| 4 | **R_SENSE und ILIM**: Stromgrenze I_LIM, min/typ/max | `A02` | 3 | **Strom-Rating aller Bauteile im Leistungspfad**, Eingangsstrom bei Überlast (an C), R13-Nachweis |
-| 5 | **MOSFETs Q101/Q102, Schottky D102** | `A03` | 1, 2, 4 | Verluste, Gate-Ladung (→ INTVCC, Bootstrap) |
-| 6 | **Bootstrap** C_B, D_B | `A04` | 5 | – |
-| 7 | **C_IN** (Rippelstrom, Nennspannung, DC-Bias) | `A05` | 1, 2, 4 | Filter (D), Hot-Plug (C), Stopper-Stabilität (C) |
-| 8 | **C_OUT** (Rippel, Lastsprung, DC-Bias) | `B02` | 2, 3 | Kompensation |
-| 9 | **Controller-Beschaltung**: Teiler, MODE, RUN, SS, FREQ, INTVCC/EXTVCC, Sense-Filter, PGOOD | `B01`, `B04`, `B05` | 2, 4, 5 | Kompensation, Schaltplan |
-| 10 | **Kompensation** (ITH-Netzwerk), Phasenreserve ≥ 60° | `B03` | 3, 4, 8, 9 | Lastsprung, Stabilität |
-| 11 | **Schutz detailliert**: Bauteile dimensionieren, Hot-Plug, Überstrom am Eingang | `C02`–`C06` | 1, 4, 7 | Filter-Lage, Verluste |
-| 12 | **EMV-Filter** + Dämpfung, Middlebrook-Prüfung | `D01` | 2, 7, 11 | – |
-| 13 | **Gesamtsimulation** LTspice: Anlauf, Lastsprung, Kurzschluss, Bode, Surge, Burst, Hot-Plug, Verpolung | `06_Simulation_Gesamt/` + Themenordner | 2–12 | Nachweise, ggf. Rücksprung zu 3–12 |
-| 14 | **Verluste, Thermik, Wirkungsgrad, Budget** | `A06`, `03_Stueckliste/` | 5, 11, 12 | Entscheidung „fertig“ oder Rücksprung |
-| 15 | **Stecker, LED, Messpunkte, Stellschrauben** (Bestückungsoptionen) | `D02` | 9, 13 | Schaltplan |
-| 16 | **Schaltplan in KiCad**, Symbole/Footprints, Stückliste aus KiCad | `04_Schaltplan_Layout/` | 1–15 | Layout |
-| 17 | **Layout-Vorgaben** (Schleifen, Masse, Kelvin, Abstände) → **Layout** → DRC → Fertigungsdaten | `D04`, `04_Schaltplan_Layout/` | 16, Platinenrahmen `D03` | Bestellung |
-| 18 | Inbetriebnahme- und Messplan | `05_Dokumentation/` | 17 | – |
+| # | Teil | Schritt | Ordner | Braucht vorher | Liefert an |
+|---|---|---|---|---|---|
+| 0 | Alle | Vorgaben und Grenzen sammeln: V_IN 22–26 V, V_OUT 12 V, I_OUT 3 A, Surge 1 kV, Burst 2 kV, Budget, Bauteilregeln | `00_Projekt/` | Aufgabenstellung | alles |
+| 1 | Eingang → Kern | **Schutzkonzept grob** (Variante A/B/C): höchste Spannung am Buck-Eingang | `C01`, `C05` | 0 | FET-Spannungsklasse, Nennspannung C_IN, VIN-Pin, Filter-C |
+| 2 | Kern | **Schaltfrequenz f** | `A01` | 0, 1 | L, C_IN, C_OUT, Filter, Verluste, R_FREQ |
+| 3 | Kern | **Spule L101**: L aus Rippelstrom-Ziel, I_SAT, DCR | `A01` | 2 | R_SENSE (I_PK), Kompensation, Kurzschlussstrom |
+| 4 | Kern | **R_SENSE und ILIM**: Stromgrenze I_LIM, min/typ/max | `A02` | 3 | **Strom-Rating aller Bauteile im Leistungspfad**, Eingangsstrom bei Überlast (an C), R13-Nachweis |
+| 5 | Kern | **MOSFETs Q101/Q102, Schottky D102** | `A03` | 1, 2, 4 | Verluste, Gate-Ladung (→ INTVCC, Bootstrap) |
+| 6 | Kern | **Bootstrap** C_B, D_B | `A04` | 5 | – |
+| 7 | Kern | **C_IN** (Rippelstrom, Nennspannung, DC-Bias) | `A05` | 1, 2, 4 | Filter (D), Hot-Plug (C), Stopper-Stabilität (C) |
+| 8 | Kern | **C_OUT** (Rippel, Lastsprung, DC-Bias) | `B02` | 2, 3 | Kompensation |
+| 9 | Kern | **Controller-Beschaltung**: Teiler, MODE, RUN, SS, FREQ, INTVCC/EXTVCC, Sense-Filter, PGOOD | `B01`, `B04`, `B05` | 2, 4, 5 | Kompensation, Schaltplan |
+| 10 | Kern | **Kompensation** (ITH-Netzwerk), Phasenreserve ≥ 60° | `B03` | 3, 4, 8, 9 | Lastsprung, Stabilität |
+| 11 | Eingang | **Schutz detailliert**: Bauteile dimensionieren, Hot-Plug, Überstrom am Eingang | `C02`–`C06` | 1, 4, 7 | Filter-Lage, Verluste |
+| 12 | Eingang | **EMV-Filter** + Dämpfung, Middlebrook-Prüfung | `D01` | 2, 7, 11 | – |
+| 13 | Alle | **Gesamtsimulation** LTspice: Anlauf, Lastsprung, Kurzschluss, Bode, Surge, Burst, Hot-Plug, Verpolung | `06_Simulation_Gesamt/` + Themenordner | 2–12 | Nachweise, ggf. Rücksprung zu 3–12 |
+| 14 | Alle | **Verluste, Thermik, Wirkungsgrad, Budget** | `A06`, `03_Stueckliste/` | 5, 11, 12 | Entscheidung „fertig“ oder Rücksprung |
+| 15 | Ausgang | **Stecker, LED, Messpunkte, Stellschrauben** (Bestückungsoptionen) | `D02` | 9, 13 | Schaltplan |
+| 16 | Alle | **Schaltplan in KiCad**, Symbole/Footprints, Stückliste aus KiCad | `04_Schaltplan_Layout/` | 1–15 | Layout |
+| 17 | Alle | **Layout-Vorgaben** (Schleifen, Masse, Kelvin, Abstände) → **Layout** → DRC → Fertigungsdaten | `D04`, `04_Schaltplan_Layout/` | 16, Platinenrahmen `D03` | Bestellung |
+| 18 | Alle | Inbetriebnahme- und Messplan | `05_Dokumentation/` | 17 | – |
 
 **Rücksprünge sind normal.** Typisch: Simulation (13) zeigt zu wenig Phasenreserve → C_OUT (8) oder Kompensation (10) ändern; Verluste (14) zu hoch → f (2) oder FETs (5) ändern; Budget überschritten → Schutzvariante (1) überdenken.
 
 ---
 
-## 3 Was braucht der LTC7800 – Pin für Pin
+## 3 Kern: Was braucht der LTC7800 – Pin für Pin
 
 Quelle: Q01 Datenblatt Rev. F, S. 8–9 (Pin Functions), Werte in `00_Projektkontext.md` §4. Gehäuse QFN-20 3 × 4 mm mit Exposed Pad.
 
@@ -74,7 +81,9 @@ Quelle: Q01 Datenblatt Rev. F, S. 8–9 (Pin Functions), Werte in `00_Projektkon
 
 ---
 
-## 4 Was brauchen die MOSFETs
+## 4 Kern: Was braucht die Leistungsstufe
+
+### 4.1 MOSFETs Q101/Q102
 
 | Anforderung | Warum | Woher der Wert |
 |---|---|---|
@@ -89,7 +98,20 @@ Quelle: Q01 Datenblatt Rev. F, S. 8–9 (Pin Functions), Werte in `00_Projektkon
 
 ---
 
-## 5 Was kommt vor dem Controller und was braucht es
+### 4.2 Spule, R_SENSE, Kondensatoren, Rückführung, Kompensation
+
+| Bauteil | Aufgabe | Braucht | Schritt |
+|---|---|---|---|
+| Spule L101 | Energie speichern, Rippelstrom begrenzen | L aus Rippelstrom-Ziel (≈ 30 % von I_OUT bei V_IN,max), I_SAT > I_LIM,max, DCR (Verlust), nur Würth | 3 (`A01`) |
+| R_SENSE R101 + ILIM | Strom messen, Stromgrenze setzen | R aus V_SENSE(MAX),min / I_PK; Leistung bei I_LIM,max; Kelvin-Anschluss, niedrige Induktivität; RC-Filter an SENSE± | 4 (`A02`) |
+| C_IN | Pulsstrom des Buck liefern | Rippelstrom ≈ 1,5 A_RMS, Nennspannung aus Schritt 1, Kapazität bei DC-Bias | 7 (`A05`) |
+| C_OUT | Rippel und Lastsprung | Kapazität bei 12 V DC-Bias, ESR, Rippelstrom | 8 (`B02`) |
+| Rückführung VFB | 12 V einstellen | Teiler E12, Toleranzrechnung (V_FB 0,8 V), C_FF-Option | 9 (`B01`) |
+| Kompensation ITH | Regelkreis stabil und schnell | L, R_SENSE, C_OUT (mit ESR, DC-Bias) müssen feststehen; Phasenreserve ≥ 60° über Last, V_IN und Toleranzen | 10 (`B03`) |
+
+---
+
+## 5 Eingangsseite: Was kommt vor dem Buck und was braucht es
 
 Für **jeden** Block vor dem Buck gelten dieselben vier Fragen: **höchste Spannung**, **Dauerstrom** (1,72 A nominal bei 22 V, bis ≈ 3 A bei Überlast – Wert aus Schritt 4), **Pulsenergie/-strom** (Surge 1 kV / 2 Ω ≈ 500 A, Burst), **Verlust im Normalbetrieb**.
 
@@ -100,20 +122,15 @@ Für **jeden** Block vor dem Buck gelten dieselben vier Fragen: **höchste Spann
 | Überstrom am Eingang (C5) | Kurzschluss im Wandler begrenzen/abschalten | Auslösestrom über max. Eingangsstrom bei I_LIM, I²t gegen Einschaltstrom, Crowbar-Fall des LTC7800 |
 | Surge-/Burst-Klemmung (C6, C8) | Überspannung begrenzen | Klemmspannung ≤ Grenze aus Schritt 1, Pulsrating 8/20 µs, bidirektional oder hinter Verpolschutz |
 | Hot-Plug (C9) | Überschwingen beim Einstecken (bis ≈ 2 × V_IN) begrenzen | Dämpfungs-Elko oder Einschaltstrombegrenzung |
-| EMV-Filter (D4, D5) | Störungen zur Quelle dämpfen | f, C_IN, Dämpfung; Middlebrook: Filter-Ausgangsimpedanz ≪ \|R_IN\| = 12,8 Ω |
-| C_IN (A10) | Pulsstrom des Buck liefern | Rippelstrom ≈ 1,5 A_RMS, Nennspannung aus Schritt 1, DC-Bias-Kapazität |
+| EMV-Filter (D4, D5) | Störungen zur Quelle dämpfen | f und C_IN aus dem Kern, Dämpfung; Middlebrook: Filter-Ausgangsimpedanz ≪ \|R_IN\| = 12,8 Ω |
 
 ---
 
-## 6 Was kommt nach dem Controller und was braucht es
+## 6 Ausgangsseite: Was kommt nach C_OUT und was braucht es
 
 | Block | Aufgabe | Braucht |
 |---|---|---|
-| Spule L101 (A5) | Energie speichern, Rippelstrom begrenzen | I_SAT > I_LIM,max, DCR (Verlust), nur Würth |
-| R_SENSE (A4) | Strom messen | Leistung bei I_LIM,max, Kelvin-Anschluss, niedrige Induktivität |
-| C_OUT (B5) | Rippel und Lastsprung | Kapazität bei 12 V DC-Bias, ESR, Rippelstrom |
-| Rückführung VFB (B3) | 12 V einstellen | Teiler E12, Toleranzrechnung, C_FF-Option |
-| Ausgangs-Überstromschutz (R13) | Überlast/Kurzschluss | Strombegrenzung + Foldback; Nachweis Dauerlast bei I_LIM,max (`A_Leistungsstufe/README.md`), Frage F7 |
+| Ausgangs-Überstromschutz (R13) | Überlast/Kurzschluss | Strombegrenzung + Foldback aus dem Kern (§4.2); Nachweis Dauerlast bei I_LIM,max (`A_Leistungsstufe/README.md`), Frage F7 |
 | Buchse J403/J404 | Last anschließen | 3 A Dauer, kurzzeitig I_LIM |
 | PGOOD → LED (D6) | Status anzeigen | N-FET mit V_GS(th) ≪ 4,85 V, LED-Strom aus INTVCC oder V_OUT |
 | Messpunkte (D7) | Inbetriebnahme | V_IN an Buchse, nach Schutz, Buck-Eingang, SW, V_OUT, ITH, VFB, PGOOD, mehrere GND |

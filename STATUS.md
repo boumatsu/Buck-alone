@@ -19,6 +19,7 @@ Jede KI-Sitzung trägt sich **vor Beginn** unter „In Arbeit“ ein und schreib
 ## Übergaben (neueste oben)
 ### 2026-10-13 – Designablauf und Werkzeuge
 - Neu: `00_Projekt/Designablauf.md` (Reihenfolge 0–18 mit Abhängigkeiten; Pin-Tabelle LTC7800 nach Q01 S. 8–9; Anforderungen MOSFETs; Blöcke vor und nach dem Controller).
+- Designablauf gegliedert in Kern (LTC7800 + Spule, R_SENSE, C_IN, C_OUT, Rückführung, Kompensation – wird zuerst ausgelegt), Eingangsseite und Ausgangsseite.
 - `AGENTS.md`: Designablauf als Pflichtlektüre, Abschnitt 6 Werkzeuge (LTspice für Simulation, KiCad für Schaltplan/PCB).
 ### 2026-10-12 – Repo angelegt
 - Struktur, Quellen Q01–Q72, Modelle, Bauteilkandidaten, Material der früheren KI mit Präfix `altKI_`.
